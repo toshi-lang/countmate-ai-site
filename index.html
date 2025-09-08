@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountMate AI - AIパイプ自動カウントアプリ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(10, 20, 40, 0.85), rgba(10, 20, 40, 0.85)), url('https://placehold.co/1200x800/1a202c/ffffff?text=パイプの画像');
+            background-size: cover;
+            background-position: center;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .price-table th, .price-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+        .price-table th {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- ヘッダー -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-slate-900">CountMate AI</h1>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#reason" class="hover:text-indigo-600 transition-colors">選ばれる理由</a>
+                <a href="#merit" class="hover:text-indigo-600 transition-colors">導入効果</a>
+                <a href="#how-to" class="hover:text-indigo-600 transition-colors">使い方</a>
+                <a href="#price" class="hover:text-indigo-600 transition-colors">料金</a>
+                <a href="#faq" class="hover:text-indigo-600 transition-colors">FAQ</a>
+            </div>
+            <a href="#contact" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-all shadow-md">
+                資料請求
+            </a>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+                    答えは、<span class="gradient-text bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400">人間とAI</span>の<br class="hidden md:block">コンビネーションにありました。
+                </h2>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                    CountMate AIは、スマートフォンのカメラをかざすだけで、あらゆるパイプを瞬時に、そして正確にカウント。目視による数え間違いや、時間のかかる棚卸し作業から解放します。
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#contact" class="bg-indigo-500 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-indigo-600 transition-all shadow-lg transform hover:scale-105">
+                        無料で資料請求
+                    </a>
+                    <a href="#how-to" class="bg-white/20 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-white/30 transition-all shadow-lg transform hover:scale-105">
+                        使い方を見る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 課題提起セクション -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">その<span class="gradient-text">カウント作業</span>、<br class="md:hidden">まだ続けますか？</h3>
+                <p class="text-slate-600 mb-12 max-w-2xl mx-auto">一つでも当てはまれば、CountMate AIがあなたのビジネスを加速させます。</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-md fade-in">
+                        <div class="text-4xl mb-4">⏱️</div>
+                        <h4 class="text-xl font-bold mb-2">時間がかかりすぎる</h4>
+                        <p class="text-slate-600">目視でのカウントや手入力に膨大な時間がかかり、本来の業務を圧迫している。</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-md fade-in" style="transition-delay: 100ms;">
+                        <div class="text-4xl mb-4">❌</div>
+                        <h4 class="text-xl font-bold mb-2">数え間違いが多い</h4>
+                        <p class="text-slate-600">ヒューマンエラーによる数え間違いで、在庫数が合わず再確認の手間が発生する。</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-md fade-in" style="transition-delay: 200ms;">
+                        <div class="text-4xl mb-4">😰</div>
+                        <h4 class="text-xl font-bold mb-2">作業者の負担が大きい</h4>
+                        <p class="text-slate-600">倉庫内の暑さ寒さの中での作業は、心理的な負担が大きく、敬遠されがちだ。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 選ばれる理由セクション -->
+        <section id="reason" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">CountMate AIが<span class="gradient-text">選ばれる理由</span></h3>
+                    <p class="text-slate-600 max-w-2xl mx-auto">単なるカウントアプリではありません。現場の課題解決のために生まれました。</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <img src="https://placehold.co/600x400/334155/ffffff?text=現場での利用風景" alt="現場での利用風景" class="rounded-xl shadow-2xl">
+                    </div>
+                    <div class="space-y-8">
+                        <div class="flex items-start fade-in">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-500 text-white flex items-center justify-center text-2xl font-bold">1</div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold mb-1">現場で生まれた、現場のためのアプリ</h4>
+                                <p class="text-slate-600">長年の現場課題であったパイプのカウント作業を解決するために、パイプのプロフェッショナル自らが開発。本当に必要な機能と使いやすさを追求しました。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start fade-in" style="transition-delay: 100ms;">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-500 text-white flex items-center justify-center text-2xl font-bold">2</div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold mb-1">人間とAIの協働による高い精度</h4>
+                                <p class="text-slate-600">AIの判定結果を人間が修正し、それをAIが再学習する独自のフィードバック機能を搭載。使えば使うほど、あなたの現場に最適化され、精度が向上し続けます。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start fade-in" style="transition-delay: 200ms;">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-500 text-white flex items-center justify-center text-2xl font-bold">3</div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold mb-1">困難な状況にも対応する認識力</h4>
+                                <p class="text-slate-600">袋に入った状態、大きさがバラバラ、束が崩れている、極小サイズなど、従来はカウントが難しかった状況でも、独自エンジンが正確にパイプを認識します。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 導入効果セクション -->
+        <section id="merit" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">年間<span class="gradient-text text-5xl md:text-6xl">150万円</span>のコスト削減も。</h3>
+                <p class="text-slate-600 mb-12 max-w-2xl mx-auto">※従業員年間コスト500万円、月間1,000回のカウント作業を行う企業様の試算例</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 fade-in">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h4 class="text-2xl font-bold mb-2 gradient-text">作業時間95%削減</h4>
+                        <p class="text-slate-600">これまで数時間かかっていた棚卸し作業が、わずか数分で完了。大幅な生産性向上に貢献します。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 fade-in" style="transition-delay: 100ms;">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h4 class="text-2xl font-bold mb-2 gradient-text">ヒューマンエラー撲滅</h4>
+                        <p class="text-slate-600">AIによる客観的で正確なカウントにより、数え間違いや報告ミスを撲滅。在庫管理の精度が飛躍的に向上します。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 fade-in" style="transition-delay: 200ms;">
+                        <div class="text-5xl mb-4">💪</div>
+                        <h4 class="text-2xl font-bold mb-2 gradient-text">作業負担の軽減</h4>
+                        <p class="text-slate-600">心理的な負担が大きい単純作業から解放され、従業員はより付加価値の高い業務に集中できます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ご利用の流れ（基本操作） -->
+        <section id="how-to" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">驚くほど簡単な<span class="gradient-text">基本操作</span></h3>
+                    <p class="text-slate-600">アプリを起動し、写真を撮るだけ。誰でもすぐに使えます。</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                    <div class="fade-in">
+                        <img src="https://placehold.co/300x400/e2e8f0/334155?text=ステップ1の画像" alt="ステップ1" class="rounded-lg shadow-md mb-4 border-4 border-white">
+                        <p class="font-bold">1. アプリを起動</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/300x400/e2e8f0/334155?text=ステップ2の画像" alt="ステップ2" class="rounded-lg shadow-md mb-4 border-4 border-white">
+                        <p class="font-bold">2. カメラで撮影</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 200ms;">
+                         <img src="https://placehold.co/300x400/e2e8f0/334155?text=ステップ3の画像" alt="ステップ3" class="rounded-lg shadow-md mb-4 border-4 border-white">
+                        <p class="font-bold">3. カウント完了</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 300ms;">
+                         <img src="https://placehold.co/300x400/e2e8f0/334155?text=ステップ4の画像" alt="ステップ4" class="rounded-lg shadow-md mb-4 border-4 border-white">
+                        <p class="font-bold">4. 範囲を指定</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 400ms;">
+                         <img src="https://placehold.co/300x400/e2e8f0/334155?text=ステップ5の画像" alt="ステップ5" class="rounded-lg shadow-md mb-4 border-4 border-white">
+                        <p class="font-bold">5. 範囲内をカウント</p>
+                    </div>
+                </div>
+                 <div class="text-center mt-8">
+                    <a href="https://www.youtube.com/watch?v=your-video-id" target="_blank" class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-lg text-lg hover:bg-slate-200 transition-all shadow-lg transform hover:scale-105">
+                        ▶ 操作風景の動画を見る
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 料金セクション -->
+        <section id="price" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">料金プラン</h3>
+                    <p class="text-slate-600">お客様のビジネス規模に合わせて柔軟に対応します。</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="fade-in">
+                        <h4 class="text-2xl font-bold mb-4 border-b-2 border-indigo-500 pb-2">初期費用</h4>
+                        <table class="w-full text-sm md:text-base price-table">
+                            <tbody>
+                                <tr class="border-b">
+                                    <th>アプリケーション</th>
+                                    <td>5,000,000円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th>拠点追加（サーバ追加なし）</th>
+                                    <td>750,000円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th>拠点追加（サーバ追加あり）</th>
+                                    <td>1,500,000円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th>AIモデルの追加</th>
+                                    <td>1,500,000円</td>
+                                </tr>
+                                <tr>
+                                    <th>その他カスタマイズ</th>
+                                    <td>別途お見積り</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-slate-500 mt-2">※当初10アカウント分は無料。追加10アカウント毎に5,000円。</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 100ms;">
+                        <h4 class="text-2xl font-bold mb-4 border-b-2 border-indigo-500 pb-2">月額費用</h4>
+                        <table class="w-full text-sm md:text-base price-table">
+                            <tbody>
+                                <tr class="border-b">
+                                    <th>サーバ費用</th>
+                                    <td>45,000円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th>リモート保守費用</th>
+                                    <td>55,000円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th>拠点追加（サーバ追加なし）</th>
+                                    <td>40,000円</td>
+                                </tr>
+                                <tr>
+                                    <th>拠点追加（サーバ追加あり）</th>
+                                    <td>75,000円</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                         <p class="text-xs text-slate-500 mt-2">※リモート保守：月間作業8時間まで、月間インシデント3件まで。</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-slate-600">詳細な料金については、担当営業にお問い合わせください。</p>
+            </div>
+        </section>
+
+        <!-- 開発ストーリー -->
+        <section id="story" class="py-16 md:py-24 bg-slate-100">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                 <div class="mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">開発者の想い</h3>
+                    <p class="text-slate-600">このアプリは、ステンレスシームレス鋼管のプロ、山本特殊鋼株式会社様の課題から生まれました。</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg fade-in">
+                    <img src="https://placehold.co/800x200/e2e8f0/334155?text=鉄鋼新聞の記事" alt="鉄鋼新聞の記事" class="rounded-md mb-6">
+                    <p class="text-left text-slate-700 leading-relaxed">「小径管が多く、棚卸しや出荷前の個数確認に膨大な手間がかかっていた。以前は棚卸しに2日かかっていたことも。この課題を解決するため、AIを使ったアプリを共同開発しました。AIには学習機能があるので、使えば使うほど精度が上がっていきます。」</p>
+                    <p class="text-right mt-4 font-bold">- 山本特殊鋼株式会社 取締役 山本正浩氏</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ -->
+        <section id="faq" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-2">よくあるご質問</h3>
+                </div>
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ項目はJSで生成 -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- お問い合わせ -->
+        <section id="contact" class="py-16 md:py-24 bg-slate-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">さあ、業務効率化の第一歩を。</h3>
+                <p class="text-slate-300 max-w-2xl mx-auto mb-8">CountMate AIが、あなたのビジネスを次のステージへ導きます。<br>まずは無料で資料をダウンロードして、その実力をご確認ください。</p>
+                <div class="bg-white rounded-xl max-w-2xl mx-auto p-8 md:p-12 text-slate-800 shadow-2xl">
+                    <form>
+                        <div class="space-y-6">
+                            <div>
+                                <label for="company" class="block text-left font-medium mb-1">会社名</label>
+                                <input type="text" id="company" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="例）株式会社カウントメイト">
+                            </div>
+                            <div>
+                                <label for="name" class="block text-left font-medium mb-1">ご担当者名<span class="text-red-500">*</span></label>
+                                <input type="text" id="name" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="例）山田 太郎">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-left font-medium mb-1">メールアドレス<span class="text-red-500">*</span></label>
+                                <input type="email" id="email" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="例）yamada@countmate.co.jp">
+                            </div>
+                             <div>
+                                <label for="message" class="block text-left font-medium mb-1">お問い合わせ内容</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="ご質問やご相談など、お気軽にご記入ください。"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-all shadow-lg transform hover:scale-105 mt-8">
+                            同意して資料をダウンロード
+                        </button>
+                        <p class="text-xs text-slate-500 mt-4">ご入力いただいた情報は、<a href="#" class="underline hover:text-indigo-600">プライバシーポリシー</a>に基づき管理いたします。</p>
+                    </form>
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <p class="font-semibold mb-2">お電話でのお問い合わせ</p>
+                        <p class="text-2xl font-bold text-indigo-600">06-6910-8480</p>
+                        <p class="text-sm text-slate-500 mt-1">countmate@upload-gp.co.jp</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-slate-900 text-slate-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-bold text-lg text-white mb-2">CountMate AI</p>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-white">運営会社：株式会社アップロード</a>
+                <a href="#" class="hover:text-white">プライバシーポリシー</a>
+                <a href="#contact" class="hover:text-white">お問い合わせ</a>
+            </div>
+            <p class="text-sm">&copy; 2024 upload Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // フェードインアニメーション
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // FAQアコーディオン
+        const faqs = [
+            {
+                q: 'どのような種類のパイプに対応していますか？',
+                a: '鋼管、塩ビ管、ステンレス管など、様々な材質や色のパイプに対応しています。特殊なパイプについては、事前にお問い合わせいただければ検証可能です。'
+            },
+            {
+                q: '暗い場所や夜間でも使用できますか？',
+                a: 'スマートフォンのフラッシュ機能を利用することで、ある程度の暗所でもカウント可能です。ただし、最適なパフォーマンスのためには十分な光量を推奨します。'
+            },
+            {
+                q: 'オフラインの環境でも使えますか？',
+                a: 'はい、オフライン環境でもパイプのカウントと一時保存が可能です。オンラインになった際に、データをクラウドへ同期できます。'
+            },
+            {
+                q: 'システム要件を教えてください。',
+                a: 'OSは不問で、ブラウザが動作すればPC・スマートフォンでご利用いただけます。インストールは不要です。インターネット接続と、パイプの円筒を認識できる400万画素以上のカメラが必要です。'
+            }
+        ];
+
+        const faqContainer = document.getElementById('faq-container');
+        faqs.forEach(faq => {
+            const faqItem = document.createElement('div');
+            faqItem.className = 'border border-slate-200 rounded-lg';
+            faqItem.innerHTML = `
+                <button class="w-full flex justify-between items-center p-4 text-left font-semibold">
+                    <span>${faq.q}</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <p class="p-4 pt-0 text-slate-600">${faq.a}</p>
+                </div>
+            `;
+            faqContainer.appendChild(faqItem);
+        });
+
+        faqContainer.addEventListener('click', (e) => {
+            const button = e.target.closest('button');
+            if (button) {
+                const content = button.nextElementSibling;
+                const svg = button.querySelector('svg');
+                
+                // 他の開いている項目を閉じる
+                const allContents = faqContainer.querySelectorAll('.max-h-0.overflow-hidden');
+                allContents.forEach(item => {
+                    if (item !== content && item.style.maxHeight) {
+                        item.style.maxHeight = null;
+                        item.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+                    }
+                });
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    svg.classList.remove('rotate-180');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    svg.classList.add('rotate-180');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
