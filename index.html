@@ -116,7 +116,9 @@
     <!-- ナビゲーションバー -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">CountMate AI</a>
+            <a href="#">
+                <img src="https://i.imgur.com/807Wb8n.png" alt="CountMate AI Logo" class="h-8 w-auto">
+            </a>
             <nav class="hidden md:flex items-center space-x-6 text-sm">
                 <a href="#features" class="text-gray-600 hover:text-green-800">特徴</a>
                 <a href="#use-cases" class="text-gray-600 hover:text-green-800">活用シーン</a>
@@ -535,13 +537,10 @@
                 </div>
                 <div class="mt-16">
                     <h3 class="text-center text-2xl font-bold mb-6">操作風景の動画</h3>
-                    <div class="max-w-3xl mx-auto youtube-container relative overflow-hidden rounded-lg shadow-lg">
-                        <a href="https://youtu.be/XmLNBFZDpJA" target="_blank" rel="noopener noreferrer" class="block">
-                            <img src="https://i.imgur.com/UmaB7Ra.jpeg" alt="YouTube Video Thumbnail" class="w-full h-full object-cover">
-                            <div class="youtube-play-button">
-                                <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                            </div>
-                        </a>
+                    <div class="max-w-3xl mx-auto rounded-lg shadow-lg overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/XmLNBFZDpJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
