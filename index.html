@@ -384,7 +384,7 @@
                     <div class="relative w-full h-48 rounded-lg shadow-lg overflow-hidden mb-12 flex items-center justify-center text-center">
                         <img src="https://i.imgur.com/vk7dtGF.png" alt="右肩上がりの成長を示すグラフ" class="absolute w-full h-full object-cover object-center">
                         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <h2 class="relative z-10 text-4xl font-bold text-white tracking-tight">Countmate AIの導入効果</h2>
+                        <h2 class="relative z-10 text-4xl font-bold text-white tracking-tight">CountMate AIの導入効果</h2>
                     </div>
                      <p class="mb-8 text-gray-600">CountMate AIの導入により、作業時間を90%程度削減することが可能です。具体的な効果を試算するため、以下の前提条件を設定します。</p>
 
@@ -670,13 +670,20 @@
                     <h2 class="relative z-10 text-4xl font-bold text-white tracking-tight">設計者の想い</h2>
                 </div>
                 <p class="text-center max-w-2xl mx-auto mb-12 text-gray-600">CountMate AIの設計者である山本特殊鋼株式会社の山本正浩取締役にお話しを伺いました。</p>
-                <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-lg overflow-hidden">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/AFj_lqNixN8?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-stretch">
+                    <!-- Video Column -->
+                    <div class="md:col-span-3 flex flex-col">
+                        <h3 class="text-xl font-bold mb-4">インタビュー動画</h3>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-lg overflow-hidden flex-grow">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/AFj_lqNixN8?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
-                    <div>
+                    <!-- Article Column -->
+                    <div class="md:col-span-2 flex flex-col">
                         <h3 class="text-xl font-bold mb-4">鉄鋼新聞の記事</h3>
-                        <img src="https://i.imgur.com/Ec9oe4T.png" alt="鉄鋼新聞の記事" class="w-full rounded-lg border-2 p-2">
+                        <div class="rounded-lg border-2 p-2 flex-grow flex items-center justify-center">
+                             <img src="https://i.imgur.com/Ec9oe4T.png" alt="鉄鋼新聞の記事" class="w-full h-auto object-contain max-h-full">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -732,8 +739,64 @@
                     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
                     <h2 class="relative z-10 text-4xl font-bold text-white tracking-tight">お問い合わせはこちら</h2>
                 </div>
-                <div class="flex justify-center">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdcswb7nId-qlnOlpoUoi_vXHKQXRD5CyxmvT-VatczlijO9Q/viewform?embedded=true" width="640" height="1487" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+                <div id="contact-form-container" class="w-full max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">お問い合わせ種別 *</label>
+                            <div class="mt-2 space-y-2">
+                                <div class="flex items-center">
+                                    <input id="type-price" name="entry.1144190351" type="radio" value="料金について" required class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                                    <label for="type-price" class="ml-3 block text-sm text-gray-700">料金について</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="type-demo" name="entry.1144190351" type="radio" value="デモ希望" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                                    <label for="type-demo" class="ml-3 block text-sm text-gray-700">デモ希望</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="type-other" name="entry.1144190351" type="radio" value="その他" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                                    <label for="type-other" class="ml-3 block text-sm text-gray-700">その他</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">氏名 *</label>
+                            <input type="text" name="entry.1552455246" id="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700">会社名 *</label>
+                            <input type="text" name="entry.786714050" id="company" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス *</label>
+                            <input type="email" name="entry.7720478" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">電話番号 *</label>
+                            <input type="tel" name="entry.599109290" id="phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                        </div>
+                         <div>
+                            <label for="timing" class="block text-sm font-medium text-gray-700">導入検討時期</label>
+                            <select id="timing" name="entry.72422760" required class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                <option>すぐにでも</option>
+                                <option>3ヶ月以内</option>
+                                <option>半年以内</option>
+                                <option>情報収集段階</option>
+                            </select>
+                        </div>
+                        <div>
+                             <label for="message" class="block text-sm font-medium text-gray-700">お問い合わせ内容 *</label>
+                            <textarea id="message" name="entry.99914181" rows="4" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <button id="contact-submit-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                送信する
+                            </button>
+                        </div>
+                    </form>
+                    <div id="contact-success-message" class="hidden text-center">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">お問い合わせありがとうございます</h3>
+                        <div id="ai-form-response" class="bg-gray-100 p-4 rounded-md text-gray-700"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -867,8 +930,6 @@
                 const apiKey = ""; // The environment will provide the API key.
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
-                // Extract text content from the page to use as context for the AI.
-                // This helps the AI answer questions specifically about the product.
                 const pageContent = document.body.innerText;
                 
                 const systemPrompt = `あなたは「CountMate AI」という製品に関する質問に答える、親切なAIアシスタントです。提供されたウェブサイトのコンテキスト情報に基づいて、ユーザーの質問に日本語で回答してください。CountMate AIは、写真から円形パイプの数を自動的にカウントするWEBアプリケーションで、手作業のカウント作業を効率化し、ミスをなくします。もし質問がCountMate AIと無関係な場合は、その質問には答えられないと丁寧に伝えてください。\n\nウェブサイトのコンテキスト:\n${pageContent.substring(0, 4000)}`;
@@ -883,30 +944,23 @@
                 };
 
                 let response;
-                let delay = 1000; // Start with 1s delay for retries
-                for (let i = 0; i < 5; i++) { // Retry up to 5 times
+                let delay = 1000;
+                for (let i = 0; i < 5; i++) {
                     try {
                         response = await fetch(apiUrl, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
-
-                        if (response.ok) {
-                            break; // If response is successful, exit the loop
-                        }
-                        
-                        // If throttled, wait and retry
+                        if (response.ok) break;
                         if (response.status === 429) {
                             await new Promise(resolve => setTimeout(resolve, delay));
-                            delay *= 2; // Exponential backoff
+                            delay *= 2;
                         } else {
-                            // For other errors, don't retry immediately
                             throw new Error(`API request failed with status ${response.status}`);
                         }
-
                     } catch (error) {
-                        if (i === 4) throw error; // If it's the last retry, throw the error
+                        if (i === 4) throw error;
                         await new Promise(resolve => setTimeout(resolve, delay));
                         delay *= 2;
                     }
@@ -930,59 +984,59 @@
 
             // --- ROI Calculator Logic ---
             const roiForm = document.getElementById('roi-form');
-            const roiResultContainer = document.getElementById('roi-result-container');
-            const roiResult = document.getElementById('roi-result');
+            if (roiForm) {
+                const roiResultContainer = document.getElementById('roi-result-container');
+                const roiResult = document.getElementById('roi-result');
 
-            roiForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const currentTime = document.getElementById('current-time').value;
-                const monthlyCounts = document.getElementById('monthly-counts').value;
-                const hourlyWage = document.getElementById('hourly-wage').value;
+                roiForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const currentTime = document.getElementById('current-time').value;
+                    const monthlyCounts = document.getElementById('monthly-counts').value;
+                    const hourlyWage = document.getElementById('hourly-wage').value;
 
-                if (!currentTime || !monthlyCounts || !hourlyWage) {
-                    // Using a custom modal instead of alert
+                    if (!currentTime || !monthlyCounts || !hourlyWage) {
+                        roiResultContainer.classList.remove('hidden');
+                        roiResult.textContent = 'すべての項目を入力してください。';
+                        roiResult.style.color = 'red';
+                        return;
+                    }
+                    roiResult.style.color = 'inherit';
+
                     roiResultContainer.classList.remove('hidden');
-                    roiResult.textContent = 'すべての項目を入力してください。';
-                    roiResult.style.color = 'red';
-                    return;
-                }
-                roiResult.style.color = 'inherit'; // Reset color
-
-                roiResultContainer.classList.remove('hidden');
-                roiResult.innerHTML = `
-                    <div class="flex items-center justify-center p-4">
-                        <div class="typing-indicator">
-                            <span></span><span></span><span></span>
+                    roiResult.innerHTML = `
+                        <div class="flex items-center justify-center p-4">
+                            <div class="typing-indicator">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="ml-3 text-gray-500">AIが分析中です...</span>
                         </div>
-                        <span class="ml-3 text-gray-500">AIが分析中です...</span>
-                    </div>
-                `;
+                    `;
 
-                try {
-                    const analysis = await callGeminiForAnalysis(currentTime, monthlyCounts, hourlyWage);
-                    // Using innerHTML to properly render line breaks from the API response
-                    roiResult.innerHTML = analysis.replace(/\n/g, '<br>');
-                } catch (error) {
-                    console.error("Error calling Gemini for ROI analysis:", error);
-                    roiResult.textContent = '申し訳ありません、分析中にエラーが発生しました。';
-                }
-            });
+                    try {
+                        const analysis = await callGeminiForAnalysis(currentTime, monthlyCounts, hourlyWage);
+                        roiResult.innerHTML = analysis.replace(/\n/g, '<br>');
+                    } catch (error) {
+                        console.error("Error calling Gemini for ROI analysis:", error);
+                        roiResult.textContent = '申し訳ありません、分析中にエラーが発生しました。';
+                    }
+                });
+            }
 
 
             // --- New Gemini API Call for ROI Analysis ---
             const callGeminiForAnalysis = async (currentTime, monthlyCounts, hourlyWage) => {
-                const apiKey = ""; // Provided by the environment
+                const apiKey = "";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 const systemPrompt = `あなたは、企業のコスト削減を分析する優秀な経営コンサルタントです。「CountMate AI」という製品の導入効果について、提供されたデータに基づいて詳細な分析レポートを作成してください。CountMate AIは、1回のカウント作業を平均10秒に短縮できるものとします。
 
-出力形式:
-1. **年間作業時間の比較:** 手作業の場合とCountMate AI導入後の年間作業時間を計算し、比較してください。
-2. **年間コスト削減額:** 削減された作業時間を、指定された時給で金額に換算してください。
-3. **生産性向上への影響:** 削減された時間をどのように他の価値ある業務に再配分できるか、具体的な提案を2-3点挙げてください。
-4. **総括:** 全体をまとめた短いコメントを提供してください。
+                出力形式:
+                1. **年間作業時間の比較:** 手作業の場合とCountMate AI導入後の年間作業時間を計算し、比較してください。
+                2. **年間コスト削減額:** 削減された作業時間を、指定された時給で金額に換算してください。
+                3. **生産性向上への影響:** 削減された時間をどのように他の価値ある業務に再配分できるか、具体的な提案を2-3点挙げてください。
+                4. **総括:** 全体をまとめた短いコメントを提供してください。
 
-分析は、プロフェッショナルかつ説得力のあるトーンで、日本語で記述してください。各項目は見出しを付けて分かりやすくまとめてください。`;
+                分析は、プロフェッショナルかつ説得力のあるトーンで、日本語で記述してください。各項目は見出しを付けて分かりやすくまとめてください。`;
 
                 const userInput = `
                     - 現在の1回あたりのカウント時間: ${currentTime}秒
@@ -1014,6 +1068,94 @@
                     console.error("Invalid response structure from analysis API:", result);
                     return "申し訳ありません、分析結果の取得に失敗しました。";
                 }
+            };
+            
+            // --- Custom Google Form Submission Logic ---
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                const contactFormContainer = document.getElementById('contact-form-container');
+                const submitButton = document.getElementById('contact-submit-button');
+
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const action = 'https://docs.google.com/forms/d/e/1FAIpQLSdcswb7nId-qlnOlpoUoi_vXHKQXRD5CyxmvT-VatczlijO9Q/formResponse';
+                    
+                    // Show a loading state on the button
+                    submitButton.disabled = true;
+                    submitButton.textContent = '送信中...';
+
+                    // Submit data in the background
+                    try {
+                        await fetch(action, {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors'
+                        });
+
+                        // Hide form and show AI-powered success message
+                        contactForm.classList.add('hidden');
+                        const successMessageDiv = document.getElementById('contact-success-message');
+                        successMessageDiv.classList.remove('hidden');
+                        
+                        const aiResponseContainer = document.getElementById('ai-form-response');
+                        aiResponseContainer.innerHTML = `
+                            <div class="flex items-center justify-center p-4">
+                                <div class="typing-indicator"><span></span><span></span><span></span></div>
+                            </div>
+                        `;
+
+                        // Call Gemini for a personalized response
+                        const name = formData.get('entry.1552455246');
+                        const company = formData.get('entry.786714050');
+                        const message = formData.get('entry.99914181');
+                        
+                        const personalizedMessage = await callGeminiForFormResponse(name, company, message);
+                        aiResponseContainer.textContent = personalizedMessage;
+
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        // Restore button if submission fails
+                        submitButton.disabled = false;
+                        submitButton.textContent = '送信する';
+                        // You could show an error message to the user here
+                    }
+                });
+            }
+            
+            const callGeminiForFormResponse = async (name, company, message) => {
+                 const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const systemPrompt = "あなたは非常に丁寧でプロフェッショナルなカスタマーサポート担当です。ウェブサイトの問い合わせフォームが送信された後に表示する、パーソナライズされたお礼のメッセージを生成してください。提供された名前、会社名、問い合わせ内容の冒頭を自然に文章に含めてください。";
+                
+                const userInput = `名前: ${name}, 会社名: ${company || '未入力'}, 問い合わせ内容の冒頭: ${message.substring(0, 30)}...`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userInput }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                     if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        return candidate.content.parts[0].text + "\n\n担当者より追ってご連絡いたしますので、今しばらくお待ちください。";
+                    }
+                } catch(e) {
+                    console.error("Failed to generate AI response for form", e);
+                }
+
+                // Fallback message
+                return `${name}様、お問い合わせいただき誠にありがとうございます。担当者より追ってご連絡いたしますので、今しばらくお待ちください。`;
             };
 
         });
