@@ -776,7 +776,7 @@
                         </div>
                          <div>
                             <label for="timing" class="block text-sm font-medium text-gray-700">導入検討時期</label>
-                            <select id="timing" name="entry.72422760" required class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+                            <select id="timing" name="entry.72422760" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
                                 <option>すぐにでも</option>
                                 <option>3ヶ月以内</option>
                                 <option>半年以内</option>
@@ -793,9 +793,9 @@
                             </button>
                         </div>
                     </form>
-                    <div id="contact-success-message" class="hidden text-center">
+                    <div id="contact-success-message" class="hidden text-left">
                         <h3 class="text-xl font-bold text-green-800 mb-4">お問い合わせありがとうございます</h3>
-                        <div id="ai-form-response" class="bg-gray-100 p-4 rounded-md text-gray-700"></div>
+                        <div id="ai-form-response" class="bg-gray-100 p-4 rounded-md text-gray-700 whitespace-pre-wrap"></div>
                     </div>
                 </div>
             </div>
@@ -1075,6 +1075,7 @@
             if (contactForm) {
                 const contactFormContainer = document.getElementById('contact-form-container');
                 const submitButton = document.getElementById('contact-submit-button');
+                const successMessageDiv = document.getElementById('contact-success-message');
 
                 contactForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
@@ -1082,11 +1083,9 @@
                     const formData = new FormData(contactForm);
                     const action = 'https://docs.google.com/forms/d/e/1FAIpQLSdcswb7nId-qlnOlpoUoi_vXHKQXRD5CyxmvT-VatczlijO9Q/formResponse';
                     
-                    // Show a loading state on the button
                     submitButton.disabled = true;
                     submitButton.textContent = '送信中...';
 
-                    // Submit data in the background
                     try {
                         await fetch(action, {
                             method: 'POST',
@@ -1094,9 +1093,7 @@
                             mode: 'no-cors'
                         });
 
-                        // Hide form and show AI-powered success message
                         contactForm.classList.add('hidden');
-                        const successMessageDiv = document.getElementById('contact-success-message');
                         successMessageDiv.classList.remove('hidden');
                         
                         const aiResponseContainer = document.getElementById('ai-form-response');
@@ -1106,20 +1103,17 @@
                             </div>
                         `;
 
-                        // Call Gemini for a personalized response
                         const name = formData.get('entry.1552455246');
                         const company = formData.get('entry.786714050');
                         const message = formData.get('entry.99914181');
                         
                         const personalizedMessage = await callGeminiForFormResponse(name, company, message);
-                        aiResponseContainer.textContent = personalizedMessage;
+                        aiResponseContainer.innerHTML = personalizedMessage;
 
                     } catch (error) {
                         console.error('Error submitting form:', error);
-                        // Restore button if submission fails
                         submitButton.disabled = false;
                         submitButton.textContent = '送信する';
-                        // You could show an error message to the user here
                     }
                 });
             }
@@ -1127,7 +1121,7 @@
             const callGeminiForFormResponse = async (name, company, message) => {
                  const apiKey = "";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                const systemPrompt = "あなたは非常に丁寧でプロフェッショナルなカスタマーサポート担当です。ウェブサイトの問い合わせフォームが送信された後に表示する、パーソナライズされたお礼のメッセージを生成してください。提供された名前、会社名、問い合わせ内容の冒頭を自然に文章に含めてください。";
+                const systemPrompt = "あなたは非常に丁寧でプロフェッショナルなカスタマーサポート担当です。ウェブサイトの問い合わせフォームが送信された後に表示する、パーソナライズされたお礼のメッセージを生成してください。提供された名前、会社名、問い合わせ内容の冒頭を自然に文章に含めてください。各文の終わり（「。」の後）には必ず改行(\\n)を入れてください。";
                 
                 const userInput = `名前: ${name}, 会社名: ${company || '未入力'}, 問い合わせ内容の冒頭: ${message.substring(0, 30)}...`;
 
@@ -1148,14 +1142,13 @@
                     const result = await response.json();
                     const candidate = result.candidates?.[0];
                     if (candidate && candidate.content?.parts?.[0]?.text) {
-                        return candidate.content.parts[0].text + "\n\n担当者より追ってご連絡いたしますので、今しばらくお待ちください。";
+                        return candidate.content.parts[0].text.replace(/\\n/g, '<br>');
                     }
                 } catch(e) {
                     console.error("Failed to generate AI response for form", e);
                 }
 
-                // Fallback message
-                return `${name}様、お問い合わせいただき誠にありがとうございます。担当者より追ってご連絡いたしますので、今しばらくお待ちください。`;
+                return `${name}様、お問い合わせいただき誠にありがとうございます。<br>担当者より追ってご連絡いたしますので、今しばらくお待ちください。`;
             };
 
         });
